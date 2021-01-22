@@ -1,0 +1,41 @@
+{% extends "layout 1.html" %}
+{% block heading %}
+   
+<style>
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid rgb(110, 36, 230);
+  background-color: bisque;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+</style>
+{% endblock %}
+
+{% block body %}
+	<h3>information matched</h3>
+	<div style="overflow-x:auto;">
+  <table>
+    <tr>
+      <th>ISBN</th>
+      <th>TITLE</th>
+      <th>AUTHOR</th>
+      <th>PUBLICATION YEAR</th>
+    </tr>
+    {% for search in search %}
+    <tr>
+    	<td><a href="{{ url_for('book_info', isbn=search.isbn) }}">{{ search.isbn }}</a></td>
+    	<td>{{ search.title }}</td>
+    	<td>{{ search.author }}</td>
+    	<td>{{ search.pub_year }}</td>
+    </tr>
+    {% endfor %} 
+</table>
+{% endblock %}   
